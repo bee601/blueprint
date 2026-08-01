@@ -1,0 +1,318 @@
+import type { SettingsManifest } from './settings.schema';
+
+/**
+ * Master settings manifest. The Laravel side reads the JSON and
+ * the React side reads this TS module — both stay in sync because the
+ * Laravel ServiceProvider writes the same JSON to public/build/.
+ */
+export const settingsManifest: SettingsManifest = {
+    version: '1.0.0',
+    categories: [
+        {
+            id: 'appearance',
+            label: 'Appearance',
+            description: 'General look & feel of the panel.',
+            icon: 'palette',
+            order: 1,
+            groups: [
+                {
+                    id: 'theme',
+                    label: 'Theme',
+                    description: 'Base color scheme and density.',
+                    settings: [
+                        { key: 'appearance.theme', category: 'appearance', label: 'Theme', type: 'select', default: 'blueprint-dark', options: [
+                            { value: 'blueprint-dark', label: 'Blueprint Dark' },
+                            { value: 'blueprint-light', label: 'Blueprint Light' },
+                            { value: 'aurora', label: 'Aurora' },
+                            { value: 'midnight', label: 'Midnight' },
+                            { value: 'sunset', label: 'Sunset' },
+                            { value: 'monochrome', label: 'Monochrome' },
+                        ], tags: ['theme'] },
+                        { key: 'appearance.mode', category: 'appearance', label: 'Color Mode', type: 'toggle-group', default: 'dark', options: [
+                            { value: 'light', label: 'Light' },
+                            { value: 'dark', label: 'Dark' },
+                            { value: 'system', label: 'System' },
+                        ], tags: ['mode'] },
+                        { key: 'appearance.accent', category: 'appearance', label: 'Accent', type: 'select', default: 'violet', options: [
+                            { value: 'violet', label: 'Violet' },
+                            { value: 'blue', label: 'Blue' },
+                            { value: 'cyan', label: 'Cyan' },
+                            { value: 'emerald', label: 'Emerald' },
+                            { value: 'rose', label: 'Rose' },
+                            { value: 'amber', label: 'Amber' },
+                            { value: 'custom', label: 'Custom' },
+                        ], tags: ['accent'] },
+                        { key: 'appearance.accentCustom', category: 'appearance', label: 'Custom Accent Color', type: 'color', default: '#6C5CE7', dependsOn: 'appearance.accent=custom', tags: ['accent'] },
+                        { key: 'appearance.radius', category: 'appearance', label: 'Corner Radius', type: 'range', default: 16, min: 0, max: 32, step: 1, tags: ['geometry'] },
+                        { key: 'appearance.density', category: 'appearance', label: 'Density', type: 'toggle-group', default: 'comfortable', options: [
+                            { value: 'compact', label: 'Compact' },
+                            { value: 'comfortable', label: 'Comfortable' },
+                            { value: 'spacious', label: 'Spacious' },
+                        ], tags: ['density'] },
+                    ],
+                },
+                {
+                    id: 'effects',
+                    label: 'Effects',
+                    description: 'Glass, blur, and motion.',
+                    settings: [
+                        { key: 'appearance.glass', category: 'appearance', label: 'Glass Surfaces', type: 'boolean', default: true, tags: ['glass'] },
+                        { key: 'appearance.blur', category: 'appearance', label: 'Blur Strength', type: 'range', default: 12, min: 0, max: 40, step: 1, dependsOn: 'appearance.glass=true', tags: ['glass'] },
+                        { key: 'appearance.animations', category: 'appearance', label: 'Animations', type: 'select', default: 'full', options: [
+                            { value: 'none', label: 'None' },
+                            { value: 'subtle', label: 'Subtle' },
+                            { value: 'full', label: 'Full' },
+                        ], tags: ['motion'] },
+                        { key: 'appearance.pageTransitions', category: 'appearance', label: 'Page Transitions', type: 'boolean', default: true, tags: ['motion'] },
+                        { key: 'appearance.gradientText', category: 'appearance', label: 'Gradient Headings', type: 'boolean', default: true, advanced: true, tags: ['style'] },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 'sidebar',
+            label: 'Sidebar',
+            description: 'Layout, density, and behavior.',
+            icon: 'panel-left',
+            order: 2,
+            groups: [
+                {
+                    id: 'layout',
+                    label: 'Layout',
+                    settings: [
+                        { key: 'sidebar.style', category: 'sidebar', label: 'Style', type: 'toggle-group', default: 'expanded', options: [
+                            { value: 'expanded', label: 'Expanded' },
+                            { value: 'collapsed', label: 'Collapsed' },
+                            { value: 'floating', label: 'Floating' },
+                            { value: 'compact', label: 'Compact' },
+                        ], tags: ['layout'] },
+                        { key: 'sidebar.position', category: 'sidebar', label: 'Position', type: 'toggle-group', default: 'left', options: [
+                            { value: 'left', label: 'Left' },
+                            { value: 'right', label: 'Right' },
+                        ], tags: ['layout'] },
+                        { key: 'sidebar.behavior', category: 'sidebar', label: 'Behavior', type: 'select', default: 'sticky', options: [
+                            { value: 'sticky', label: 'Sticky' },
+                            { value: 'fixed', label: 'Fixed' },
+                            { value: 'hover', label: 'Hover Expand' },
+                        ], tags: ['behavior'] },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 'layout',
+            label: 'Layout',
+            description: 'Page-level structure & spacing.',
+            icon: 'layout',
+            order: 3,
+            groups: [
+                {
+                    id: 'navbar',
+                    label: 'Navbar',
+                    settings: [
+                        { key: 'navbar.search', category: 'layout', label: 'Search Bar', type: 'boolean', default: true },
+                        { key: 'navbar.commandPaletteShortcut', category: 'layout', label: 'Command Palette Shortcut', type: 'boolean', default: true },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 'dashboard',
+            label: 'Dashboard',
+            description: 'Widget system & overview layout.',
+            icon: 'gauge',
+            order: 4,
+            groups: [
+                {
+                    id: 'widgets',
+                    label: 'Widgets',
+                    description: 'Configure which widgets appear on the dashboard.',
+                    settings: [
+                        { key: 'dashboard.layout', category: 'dashboard', label: 'Layout', type: 'json', default: [] },
+                        { key: 'dashboard.refreshInterval', category: 'dashboard', label: 'Refresh Interval (s)', type: 'number', default: 30, min: 5, max: 600 },
+                        { key: 'dashboard.compactMode', category: 'dashboard', label: 'Compact Mode', type: 'boolean', default: false },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 'animations',
+            label: 'Animations',
+            description: 'Fine-grained animation control.',
+            icon: 'sparkles',
+            order: 5,
+            groups: [
+                {
+                    id: 'general',
+                    label: 'General',
+                    settings: [
+                        { key: 'animations.duration', category: 'animations', label: 'Duration Multiplier', type: 'range', default: 1, min: 0.25, max: 2, step: 0.05 },
+                        { key: 'animations.easing', category: 'animations', label: 'Easing', type: 'select', default: 'out-expo', options: [
+                            { value: 'linear', label: 'Linear' },
+                            { value: 'ease-out', label: 'Ease Out' },
+                            { value: 'out-expo', label: 'Out Expo' },
+                            { value: 'in-out-expo', label: 'In Out Expo' },
+                            { value: 'spring', label: 'Spring' },
+                        ] },
+                        { key: 'animations.reducedMotion', category: 'animations', label: 'Respect Reduced Motion', type: 'boolean', default: true, advanced: true },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 'accessibility',
+            label: 'Accessibility',
+            description: 'Make the panel usable for everyone.',
+            icon: 'accessibility',
+            order: 6,
+            groups: [
+                {
+                    id: 'general',
+                    label: 'General',
+                    settings: [
+                        { key: 'a11y.reducedMotion', category: 'accessibility', label: 'Reduce Motion', type: 'boolean', default: false },
+                        { key: 'a11y.highContrast', category: 'accessibility', label: 'High Contrast', type: 'boolean', default: false },
+                        { key: 'a11y.underlineLinks', category: 'accessibility', label: 'Underline Links', type: 'boolean', default: false },
+                        { key: 'a11y.largerText', category: 'accessibility', label: 'Larger Text', type: 'boolean', default: false },
+                        { key: 'a11y.focusRing', category: 'accessibility', label: 'Visible Focus Ring', type: 'boolean', default: true },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 'developer',
+            label: 'Developer',
+            description: 'Debugging, logs, and tooling.',
+            icon: 'terminal',
+            order: 7,
+            groups: [
+                {
+                    id: 'debug',
+                    label: 'Debug',
+                    settings: [
+                        { key: 'dev.debug', category: 'developer', label: 'Debug Mode', type: 'boolean', default: false, advanced: true },
+                        { key: 'dev.showQueryTimings', category: 'developer', label: 'Show Query Timings', type: 'boolean', default: false, advanced: true },
+                        { key: 'dev.logLevel', category: 'developer', label: 'Log Level', type: 'select', default: 'info', options: [
+                            { value: 'silent', label: 'Silent' },
+                            { value: 'error', label: 'Error' },
+                            { value: 'warn', label: 'Warn' },
+                            { value: 'info', label: 'Info' },
+                            { value: 'debug', label: 'Debug' },
+                            { value: 'trace', label: 'Trace' },
+                        ], advanced: true },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 'security',
+            label: 'Security',
+            description: 'Sessions, 2FA, and access controls.',
+            icon: 'shield',
+            order: 8,
+            groups: [
+                {
+                    id: 'sessions',
+                    label: 'Sessions',
+                    settings: [
+                        { key: 'security.sessionTimeout', category: 'security', label: 'Session Timeout (min)', type: 'number', default: 60, min: 5, max: 1440 },
+                        { key: 'security.ipWhitelist', category: 'security', label: 'IP Whitelist', type: 'text', default: '' },
+                        { key: 'security.require2fa', category: 'security', label: 'Require 2FA for Admins', type: 'boolean', default: false, advanced: true },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 'performance',
+            label: 'Performance',
+            description: 'Caching, prefetching, and bundle controls.',
+            icon: 'zap',
+            order: 9,
+            groups: [
+                {
+                    id: 'cache',
+                    label: 'Cache',
+                    settings: [
+                        { key: 'perf.prefetch', category: 'performance', label: 'Link Prefetch', type: 'boolean', default: true },
+                        { key: 'perf.cacheTtl', category: 'performance', label: 'Cache TTL (s)', type: 'number', default: 60, min: 0, max: 3600 },
+                        { key: 'perf.lazyImages', category: 'performance', label: 'Lazy Load Images', type: 'boolean', default: true },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 'experimental',
+            label: 'Experimental',
+            description: 'Unstable, use with caution.',
+            icon: 'flask',
+            order: 10,
+            groups: [
+                {
+                    id: 'labs',
+                    label: 'Labs',
+                    settings: [
+                        { key: 'exp.newConsole', category: 'experimental', label: 'New Console (Beta)', type: 'boolean', default: false, experimental: true },
+                        { key: 'exp.aiAssistant', category: 'experimental', label: 'AI Assistant', type: 'boolean', default: false, experimental: true },
+                        { key: 'exp.streaming', category: 'experimental', label: 'Streaming Responses', type: 'boolean', default: false, experimental: true },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 'branding',
+            label: 'Branding',
+            description: 'Logos, names, and identity.',
+            icon: 'badge',
+            order: 11,
+            groups: [
+                {
+                    id: 'identity',
+                    label: 'Identity',
+                    settings: [
+                        { key: 'brand.name', category: 'branding', label: 'Panel Name', type: 'string', default: 'Blueprint' },
+                        { key: 'brand.tagline', category: 'branding', label: 'Tagline', type: 'string', default: 'Premium Pterodactyl UI' },
+                        { key: 'brand.logo', category: 'branding', label: 'Logo URL', type: 'string', default: '/images/logo.svg' },
+                        { key: 'brand.favicon', category: 'branding', label: 'Favicon URL', type: 'string', default: '/favicon.svg' },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 'custom',
+            label: 'Custom Code',
+            description: 'Inject your own CSS, JS, and HTML.',
+            icon: 'code',
+            order: 12,
+            groups: [
+                {
+                    id: 'injection',
+                    label: 'Injection',
+                    settings: [
+                        { key: 'custom.css', category: 'custom', label: 'Custom CSS', type: 'css', default: '', advanced: true },
+                        { key: 'custom.js', category: 'custom', label: 'Custom JavaScript', type: 'js', default: '', advanced: true },
+                        { key: 'custom.headHtml', category: 'custom', label: 'Custom <head> HTML', type: 'html', default: '', advanced: true },
+                        { key: 'custom.footerHtml', category: 'custom', label: 'Custom Footer HTML', type: 'html', default: '', advanced: true },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 'advanced',
+            label: 'Advanced',
+            description: 'Power user settings. Tread carefully.',
+            icon: 'settings-2',
+            order: 13,
+            groups: [
+                {
+                    id: 'system',
+                    label: 'System',
+                    settings: [
+                        { key: 'advanced.telemetry', category: 'advanced', label: 'Anonymous Telemetry', type: 'boolean', default: true },
+                        { key: 'advanced.experimental', category: 'advanced', label: 'Show Experimental Settings', type: 'boolean', default: false },
+                        { key: 'advanced.debugNetwork', category: 'advanced', label: 'Debug Network', type: 'boolean', default: false, advanced: true },
+                    ],
+                },
+            ],
+        },
+    ],
+};

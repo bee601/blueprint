@@ -1,0 +1,48 @@
+{
+  "schema": "blueprint.palette.v1",
+  "name": "default",
+  "primary": [
+    { "name": "primary-50",  "value": "#F4F2FF" },
+    { "name": "primary-100", "value": "#E9E5FF" },
+    { "name": "primary-200", "value": "#D2CAFF" },
+    { "name": "primary-300", "value": "#B3A4FF" },
+    { "name": "primary-400", "value": "#9177FF" },
+    { "name": "primary-500", "value": "#7557F0" },
+    { "name": "primary-600", "value": "#6C5CE7" },
+    { "name": "primary-700", "value": "#5A48C9" },
+    { "name": "primary-800", "value": "#4838A0" },
+    { "name": "primary-900", "value": "#382A7A" }
+  ],
+  "accent": [
+    { "name": "accent-50",  "value": "#F5F3FF" },
+    { "name": "accent-100", "value": "#EDE9FE" },
+    { "name": "accent-200", "value": "#DDD6FE" },
+    { "name": "accent-300", "value": "#C4B5FD" },
+    { "name": "accent-400", "value": "#A78BFA" },
+    { "name": "accent-500", "value": "#8B5CF6" },
+    { "name": "accent-600", "value": "#7C3AED" },
+    { "name": "accent-700", "value": "#6D28D9" },
+    { "name": "accent-800", "value": "#5B21B6" },
+    { "name": "accent-900", "value": "#4C1D95" }
+  ],
+  "status": {
+    "success": { "value": "#22C55E", "description": "Healthy, online, success states." },
+    "warning": { "value": "#F59E0B", "description": "Caution, partial issues." },
+    "danger":  { "value": "#EF4444", "description": "Errors, failures, destructive." },
+    "info":    { "value": "#3B82F6", "description": "Neutral information." }
+  },
+  "neutral": [
+    { "name": "neutral-0",   "value": "#FFFFFF" },
+    { "name": "neutral-50",  "value": "#F8FAFC" },
+    { "name": "neutral-100", "value": "#F1F5F9" },
+    { "name": "neutral-200", "value": "#E2E8F0" },
+    { "name": "neutral-300", "value": "#CBD5E1" },
+    { "name": "neutral-400", "value": "#94A3B8" },
+    { "name": "neutral-500", "value": "#64748B" },
+    { "name": "neutral-600", "value": "#475569" },
+    { "name": "neutral-700", "value": "#334155" },
+    { "name": "neutral-800", "value": "#1E293B" },
+    { "name": "neutral-900", "value": "#0F172A" },
+    { "name": "neutral-950", "value": "#020617" }
+  ]
+}

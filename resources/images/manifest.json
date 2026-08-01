@@ -1,0 +1,12 @@
+{
+  "name": "Blueprint",
+  "short_name": "Blueprint",
+  "description": "Premium Pterodactyl Panel UI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F19",
+  "theme_color": "#6C5CE7",
+  "icons": [
+    { "src": "/images/logo.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "blueprint/pterodactyl-theme",
+  "description": "A premium replacement UI for the Pterodactyl Panel.",
+  "type": "library",
+  "license": "MIT",
+  "keywords": ["pterodactyl", "panel", "theme", "blueprint", "ui", "dark"],
+  "require": {
+    "php": "^8.1",
+    "pterodactyl/panel": "^1.11"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^8.0",
+    "phpunit/phpunit": "^10.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Blueprint\\": "src/",
+      "Blueprint\\Theme\\": "theme/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Blueprint\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Blueprint\\Theme\\Providers\\BlueprintServiceProvider"
+      ]
+    },
+    "branch-alias": {
+      "dev-main": "1.x-dev"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true,
+      "php-http/discovery": true
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

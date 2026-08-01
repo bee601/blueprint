@@ -1,0 +1,81 @@
+.console-output {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: rgb(var(--foreground));
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 24px),
+                rgb(var(--background));
+    padding: 16px 20px;
+    height: 100%;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.console-line {
+    display: block;
+    padding: 2px 0;
+    border-bottom: 1px solid rgb(var(--border) / 0.2);
+    animation: slide-in-from-left 0.18s ease-out;
+}
+
+.console-line.system   { color: rgb(var(--accent)); }
+.console-line.info     { color: rgb(var(--foreground)); }
+.console-line.warn     { color: rgb(var(--warning)); }
+.console-line.error    { color: rgb(var(--destructive)); }
+.console-line.success  { color: rgb(var(--success)); }
+.console-line.muted    { color: rgb(var(--muted-foreground)); }
+
+.console-caret {
+    display: inline-block;
+    width: 7px;
+    height: 14px;
+    background: rgb(var(--primary));
+    margin-left: 4px;
+    vertical-align: text-bottom;
+    animation: caret-blink 1.1s steps(2) infinite;
+}
+
+.console-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: inherit;
+    font: inherit;
+    width: 100%;
+    padding: 0;
+}
+
+.console-input::placeholder {
+    color: rgb(var(--muted-foreground) / 0.6);
+}
+
+.console-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgb(var(--background) / 0.6);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgb(var(--border));
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+}
+
+.console-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgb(var(--muted-foreground));
+}
+
+.console-status::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: currentColor;
+    box-shadow: 0 0 8px currentColor;
+}

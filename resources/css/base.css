@@ -1,0 +1,17 @@
+@import './base.css';
+
+@layer components {
+  .app-shell {
+    @apply flex min-h-screen;
+  }
+
+  .app-main {
+    @apply flex-1 flex flex-col min-w-0;
+    background: linear-gradient(180deg, rgb(var(--background) / 1) 0%, rgb(var(--background) / 0.94) 100%);
+  }
+
+  .page-container {
+    @apply flex-1 px-6 py-6 mx-auto w-full;
+    max-width: 1440px;
+  }
+}

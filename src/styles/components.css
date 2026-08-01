@@ -1,0 +1,7 @@
+/* Mirror of resources/css/components.css so React components look the same as Blade. */
+
+@layer components {
+  .bp-card {
+    @apply rounded-2xl border border-border bg-card/70 backdrop-blur-md;
+  }
+}

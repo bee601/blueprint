@@ -1,0 +1,13 @@
+// Variables
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius: 16px;
+
+// SCSS partials
+@import './partials/buttons';
+@import './partials/cards';
+@import './partials/forms';
+@import './partials/badges';
+@import './partials/utilities';

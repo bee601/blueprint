@@ -1,0 +1,6 @@
+/* Mirror of resources/css/admin.css */
+
+@layer components {
+  .dashboard-stats { @apply mb-6; }
+  .settings-shell { @apply grid grid-cols-1 lg:grid-cols-[14rem_1fr] gap-6; }
+}
