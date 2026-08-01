@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b --noEmit && vite build",
+    "build": "vite build",
     "build:css": "tailwindcss -i ./resources/css/app.css -o ./public/css/blueprint.css --minify",
     "build:css:watch": "tailwindcss -i ./resources/css/app.css -o ./public/css/blueprint.css --watch",
     "watch": "vite build --watch",

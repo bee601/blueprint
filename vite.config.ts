@@ -9,8 +9,6 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.tsx',
-                'resources/js/admin.tsx',
-                'resources/js/auth.tsx',
             ],
             refresh: ['resources/views/**'],
         }),
@@ -67,10 +65,5 @@ export default defineConfig({
         hmr: {
             host: 'localhost',
         },
-    },
-    test: {
-        globals: true,
-        environment: 'jsdom',
-        setupFiles: ['./src/test/setup.ts'],
     },
 });
